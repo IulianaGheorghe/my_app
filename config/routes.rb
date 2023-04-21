@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   get 'goodbye', to: 'application#goodbye'
   get 'extra', to: 'application#extra'
+  get 'bye', to: 'application#bye'
 
 end
