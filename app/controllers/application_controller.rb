@@ -15,4 +15,15 @@ class ApplicationController < ActionController::Base
         }
     end
 
+    def bye 
+        respond_to do |format|
+            format.html {
+              render :html => "hello there!"
+            }
+            format.json {
+              render :json => {"message": "hello there!", "error": "bye!"}
+            }
+        end
+    end
+
 end
