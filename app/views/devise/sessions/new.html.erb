@@ -1,26 +1,53 @@
-<h2>Log in</h2>
+ <!-- Section: Design Block -->
+  <section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 300px;
+          "></div>
+    <!-- Background image -->
+    <div class="col-md-6", style="left: 25%;">
+      <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -150px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+        <div class="card-body py-5 px-md-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h2 class="fw-bold mb-5">Log in</h2>
+             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "form3Example3"%>
+                  <%= f.label :email, class: "form-label", for:"form3Example3" %><br />
+                </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <%= f.password_field :password, autocomplete: "current-password", id: "form3Example4", class: "form-control"%>
+                  <%= f.label :password, class: "form-label", for: "form3Example4" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                <!-- Checkbox -->
+                <% if devise_mapping.rememberable? %>
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <%= f.check_box :remember_me,  class: "form-check-input me-", type:"checkbox", value:"", id:"form2Example33" %>
+                    <%= f.label :remember_me, class: "form-check-label", for:"form2Example33" %>
+                  </div>
+                <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                <!-- Submit button -->
+                <div class="actions", style="padding-top: 10px;">
+                  <%= f.submit "Log in", type:"submit", class:"btn btn-info btn-block mb-4" %>
+                </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
+  </section>
+<!-- Section: Design Block -->
 <%= render "devise/shared/links" %>
+</div>

@@ -43,6 +43,8 @@ gem "tzinfo-data"
 gem "bootsnap", require: false
 
 gem 'devise'
+gem 'bootstrap', '~> 5.1.3'
+gem 'jquery-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
