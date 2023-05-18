@@ -1,35 +1,32 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#0C0B10 !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
     <a class="navbar-brand me-2">
-      <%= image_tag("logo.PNG", alt: "logo", style: "height:60px; width:60px; margin-top: -1px;") %>
+      <%= image_tag("logo.png", alt: "logo", id: "navbar-image") %>
     </a>
 
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarButtonsExample">
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/" , style="color: #C09040">Home</a>
-        </li>
+        <li class="nav-item"> <%= link_to "Home", root_path, class: "nav-link", id: "nav-link-text" %></li>
+        <% if user_signed_in? %>
+        <li class="nav-item"> <%= link_to "Categories", categories_path, class: "nav-link", id: "nav-link-text" %></li>
+        <li class="nav-item"> <%= link_to "Products", products_path, class: "nav-link", id: "nav-link-text" %></li>
+        <% end %>
       </ul>
       <!-- Right links -->
-      <div class="d-flex align-items-center justify-content-end" style="margin-top: 8px;">
+      <div class="d-flex align-items-center justify-content-end">
         <% if !user_signed_in? %>
-          <%# <a role="button" class="btn btn-link px-3 me-2" href="/users/sign_in">
-            Login
-          </a> %>
-          <%= link_to "Sign In", user_session_path, method: :post , style: "color: #C09040; margin-right:10px;"%>
-          <a role="button" class="btn btn-info me-3" href="/users/sign_up" style="background-color: #C09040 !important">
-            <span style="color: black"> Sign up </span>
-          </a>
-          
+          <%= link_to "Sign In", user_session_path, method: :post , id: "sign-in-button-text" %>
+          <div role="button", class="btn btn-dark me-3", id="nav-button">
+            <%= link_to "Sign Up", new_user_registration_path, method: :post , id: "sign-up-button-text" %> 
+          </div>
         <% else %>
-
-          <div role="button", class="btn btn-dark me-3" style="background-color: #C09040 !important">
-            <%= link_to "Sign Out", destroy_user_session_path, 'data-turbo-method': :delete , style: "color: black;"%> 
+          <div role="button", class="btn btn-dark me-3", id="nav-button">
+            <%= link_to "Sign Out", destroy_user_session_path, 'data-turbo-method': :delete , id: "sign-out-button-text"%> 
           </div>
         <% end %>
       </div>

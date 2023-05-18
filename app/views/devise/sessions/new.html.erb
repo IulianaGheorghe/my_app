@@ -1,53 +1,59 @@
- <!-- Section: Design Block -->
-  <section class="text-center">
-    <!-- Background image -->
-    <div class="p-5 bg-image" style="
-          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
-          height: 300px;
-          "></div>
-    <!-- Background image -->
-    <div class="col-md-6", style="left: 25%;">
-      <div class="card mx-4 mx-md-5 shadow-5-strong" style="
-        margin-top: -150px;
-        background: hsla(0, 0%, 100%, 0.8);
-        backdrop-filter: blur(30px);
-        ">
-        <div class="card-body py-5 px-md-5">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="fw-bold mb-5">Log in</h2>
-             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "form3Example3"%>
-                  <%= f.label :email, class: "form-label", for:"form3Example3" %><br />
-                </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <%= f.password_field :password, autocomplete: "current-password", id: "form3Example4", class: "form-control"%>
-                  <%= f.label :password, class: "form-label", for: "form3Example4" %>
-                </div>
+<section class="vh-100" style="background-color: #E6BE8A;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <%= image_tag("perfum.jpg", alt: "perfume",class:"img-fluid", id: "card-image") %>      
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
 
-                <!-- Checkbox -->
-                <% if devise_mapping.rememberable? %>
-                  <div class="form-check d-flex justify-content-center mb-4">
-                    <%= f.check_box :remember_me,  class: "form-check-input me-", type:"checkbox", value:"", id:"form2Example33" %>
-                    <%= f.label :remember_me, class: "form-check-label", for:"form2Example33" %>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                  <%= image_tag("logo-white.png", alt: "logo", id: "card-logo") %>
+                
+                  <h5 class="fw-normal mb-3 pb-3" id="card-title">Sign into your account</h5>
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form2Example17", class: "form-control form-control-lg" %>
+                    <%= f.label :email, class: "form-label", for: "form2Example17" %>
                   </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <%= f.password_field :password, autocomplete: "current-password", id: "form2Example27", class: "form-control form-control-lg" %>
+                    <%= f.label :password, class: "form-label", for: "form2Example27"%>
+                  </div>
+
+                  <!-- Checkbox -->
+                  <% if devise_mapping.rememberable? %>
+                    <div class="form-check d-flex justify-content-center mb-4">
+                      <%= f.check_box :remember_me, {:checked => "checked"}, class: "form-check-input me-", type:"checkbox", value:"", id:"form2Example33"%>
+                      <%= f.label :remember_me, class: "form-check-label", for:"form2Example33" %>
+                    </div>
+                  <% end %>
+
+                  <!-- Submit button -->
+                  <div class="pt-1 mb-4">
+                    <%= f.submit "Log in", type:"submit", class:"btn btn-dark btn-lg btn-block" %>
+                  </div>
+
+                  <%= link_to "Forgot password?", new_user_password_path, method: :get , class: "small text-muted"%> 
+
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
+                    <%= link_to "Register here", new_user_registration_path, method: :post , style: "color: grey;"%> 
+                  </p>
                 <% end %>
 
-                <!-- Submit button -->
-                <div class="actions", style="padding-top: 10px;">
-                  <%= f.submit "Log in", type:"submit", class:"btn btn-info btn-block mb-4" %>
-                </div>
-              <%end%>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-  </section>
-<!-- Section: Design Block -->
-<%= render "devise/shared/links" %>
-</div>
+</section>
