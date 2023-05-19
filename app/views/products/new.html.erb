@@ -1,9 +1,9 @@
-<h1>New product</h1>
+<div class="product">
 
-<%= render "form", button_text: "Create" %>
+  <h1 class="font-effect-outline" id="new-product-title">New product</h1>
 
-<br>
+  <%= render "form", button_text: "Create" %>
 
-<div>
-  <%= link_to "Back to products", products_path %>
+  <%= link_to "Back", products_path, class: "btn btn-warning", id: "back-button" %>
+    
 </div>

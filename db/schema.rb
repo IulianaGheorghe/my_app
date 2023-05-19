@@ -24,6 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_074704) do
     t.string "sku", null: false
     t.integer "stock", null: false
     t.float "price", null: false
+    t.integer "quantity", null: false
+    t.string "type", null: false
+    t.string "notes", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"

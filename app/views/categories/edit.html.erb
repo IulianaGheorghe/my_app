@@ -1,10 +1,12 @@
-<h1>Editing category</h1>
+<div class="category">
 
-<%= render "form", button_text: "Update" %>
+  <h1 class="font-effect-outline" id="new-category-title">Editing category</h1>
 
-<br>
+  <%= render "form", button_text: "Update" %>
 
-<div>
+  <br>
+
   <%= link_to "Show this category", @category %> |
-  <%= link_to "Back to categories", categories_path %>
+  <%= link_to "Back", categories_path, class: "btn btn-warning", id: "back-button" %>
+
 </div>
