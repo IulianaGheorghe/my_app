@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :stock, null: false
       t.float :price, null: false
       t.integer :quantity, null: false
-      t.string :type, null: false # eau de parfum / eau de toilette
+      t.string :perfumetype, null: false # eau de parfum / eau de toilette
       t.string :notes, null: false  # olfactory notes
       t.timestamps
     end

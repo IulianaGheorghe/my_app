@@ -46,6 +46,8 @@ gem 'devise'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 
+gem 'pagy'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
