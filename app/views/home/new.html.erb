@@ -1,0 +1,17 @@
+<div style="margin: 30px;">
+    <% Product.find_each do |product| %>
+        <div class="card" style="float: left; width: 15rem; height:35rem; background-color: #FAFAD2; border-radius: 1rem; margin: 20px;">
+            <%= image_tag product.image %>
+            <div class="card-body">
+                <h5 class="card-title", style="opacity: 0.8;"><%= product.brand %></h5>
+                <h3 class="card-title"><%= product.name %></h3>
+                <h6 class="card-title", style="opacity: 0.5;"><%= product.perfumetype %></h6>
+            </div>
+            <div style="display: flex; margin: 15px;">
+                <h3><%= product.quantity %> ml</h3>
+                <h3 style="margin-left: auto;"><%= product.price %>€</h3>
+            </div>
+            <%= link_to 'Show', product, class: "btn btn-info btn-sm", style: "margin:2px 30px 20px 30px; border-radius: 1rem;"%> 
+        </div>
+    <% end %>
+</div>

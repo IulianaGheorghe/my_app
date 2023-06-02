@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2 class="font-effect-shadow-multiple" id="new-product-title">Products</h2>
+  <%= link_to 'New Product', new_product_path, class: "btn btn-info btn-lg btn-block", style: "margin-bottom: 25px;" %>
+  <br>
+  <%== pagy_info(@pagy) %>
+  <table class="table table-info table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Description</th>
+          <th scope="col">SKU</th>
+          <th scope="col">Type</th>
+          <th scope="col">Olfactory notes</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Category</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.brand %></td>
+            <td><%= product.description %></td>
+            <td><%= product.sku %></td>
+            <td><%= product.perfumetype %></td>
+            <td><%= product.notes %></td>
+            <td><%= product.stock %></td>
+            <td><%= product.quantity %> ml</td>
+            <td><%= product.category.name %></td>
+            <td>
+              <%= link_to 'Show', product, class: "btn btn-primary btn-sm", style: "margin:2px;"%> 
+              <%= link_to 'Edit', edit_product_path(product), class: "btn btn-success btn-sm", style: "margin:2px;" %> 
+              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "margin:2px;" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%== pagy_nav(@pagy) if @pagy.pages > 1%>
+</div>
