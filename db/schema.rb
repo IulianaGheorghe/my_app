@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_083646) do
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
+    t.string "brand", null: false
     t.string "description", null: false
     t.string "sku", null: false
     t.integer "stock", null: false

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show]
-  before_action :check_admin
+  before_action :check_admin, except: [:show]
 
   include Pagy::Backend
   # GET /products or /products.json
@@ -69,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :description, :sku, :stock, :price, :category_id, :quantity, :perfumetype, :notes, :image )
+      params.require(:product).permit(:id, :name, :brand, :description, :sku, :stock, :price, :category_id, :quantity, :perfumetype, :notes, :image )
     end
 end
