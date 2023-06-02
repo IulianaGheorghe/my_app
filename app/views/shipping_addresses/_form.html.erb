@@ -1,0 +1,38 @@
+<%= form_for(@shipping_address) do |f| %>
+  <% if shipping_address.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(shipping_address.errors.count, "error") %> prohibited this shipping_address from being saved:</h2>
+
+      <ul>
+        <% shipping_address.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-outline mb-4">
+    <%= f.text_field :street_address, autofocus: true, required: true, class: "form-control", placeholder: "Address", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.text_field :city, required: true, class: "form-control", placeholder: "City", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.text_field :state, required: true, class: "form-control", placeholder: "State", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.text_field :postal_code, required: true, class: "form-control", placeholder: "Postal Code", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.text_field :country, required: true, class: "form-control", placeholder: "Country", id: "text-field"%>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= f.submit button_text, class: "btn btn-info btn-block mb-4" %>
+  </div>
+<% end %>

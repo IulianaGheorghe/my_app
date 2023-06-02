@@ -20,7 +20,7 @@
             <td>
               <%= link_to 'Show', category, class: "btn btn-primary btn-sm", style: "margin:2px;" %>  
               <%= link_to 'Edit', edit_category_path(category), class: "btn btn-success btn-sm", style: "margin:2px;" %> 
-              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "margin:2px;" %>
+              <%= link_to 'Destroy', category, method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "margin:2px;" %>
             </td>
           </tr>
         <% end %>

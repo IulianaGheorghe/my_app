@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :billing_addresses
+  resources :shipping_addresses
   resources :products
   resources :categories
   get 'accounts', to: 'users#index', as: "users"

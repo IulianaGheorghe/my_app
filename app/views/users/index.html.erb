@@ -11,6 +11,7 @@
             <td><%= user.id %></td>
             <td><%= user.email %></td>
             <td><%= user.created_at %></td>
+            <td><%= link_to 'Show', user, class: "btn btn-primary btn-sm", style: "margin:2px;"%> </td>
         </tr>
     <% end %>
 </table>
