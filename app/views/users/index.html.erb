@@ -1,17 +1,29 @@
-<h2> Users </h2>
-
-<table>
-    <tr>
-        <th> ID </th>
-        <th> Email </th>
-        <th> Creation Date </th>
-    </tr>
-    <% @users.each do |user| %>
+<div class="container mt-5">
+  <h2>Users</h2>
+  <table class="table table-info table-striped">
+      <thead>
         <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Role</th>
+          <th scope="col">Creation Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
             <td><%= user.id %></td>
             <td><%= user.email %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.phone_number %></td>
+            <td><%= user.role %></td>
             <td><%= user.created_at %></td>
-            <td><%= link_to 'Show', user, class: "btn btn-primary btn-sm", style: "margin:2px;"%> </td>
-        </tr>
-    <% end %>
-</table>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

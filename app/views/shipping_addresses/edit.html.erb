@@ -4,11 +4,8 @@
 
   <%= render "form", shipping_address: @shipping_address, button_text: "Update" %>
 
-  <br>
-
   <div>
-    <%= link_to "Show this shipping address", @shipping_address, class: "btn btn-primary", id: "back-button" , style: "float: right;" %> |
-    <%= link_to "Back to shipping addresses", shipping_addresses_path, class: "btn btn-warning", id: "back-button" %>
+    <%= link_to "Back", my_account_path, class: "btn btn-warning", id: "back-button" %>
   </div>
 
 </div>
