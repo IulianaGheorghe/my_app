@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :billing_addresses
+  resources :shipping_addresses
   resources :products
   resources :categories
-  get 'accounts', to: 'users#index', as: "users"
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,10 +12,9 @@ Rails.application.routes.draw do
 
   root 'home#new'
 
-  get 'goodbye', to: 'application#goodbye'
-  get 'extra', to: 'application#extra'
-  get 'bye', to: 'application#bye'
   get "sign_up", to: "users#new"
   get 'log_out', to: 'extra#new'
+  get 'accounts', to: 'users#index', as: "users"
+  get 'my_account', to: 'users#show'
 
 end
