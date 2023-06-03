@@ -24,7 +24,14 @@
       <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-info" %>
     </div>
   <% else %>
-    <%= link_to 'Back', root_path, class: "btn btn-info btn-sm", style: "margin:10px 100px 20px 100px; border-radius: 1rem;"%>
+    <div class="text-center total font-weight-bold mt-4">
+      <% if current_user.present? %>
+        <%= button_to 'Buy Now!', orders_path(order: { user_id: current_user.id, product_id: @product.id }), data: {method: :post}, class: "btn btn-info", style: "margin:10px 100px 20px 100px; border-radius: 1rem;" %>
+      <% else %>
+        <p class="text-muted mb-0">You need to be logged in to order!</p>
+      <% end %>
+    </div>
+    <%= link_to 'Back', root_path, class: "btn btn-warning btn-sm", style: "margin:40px 400px 20px 10px; border-radius: 1rem;"%>
   <% end %>
 </div>
 
