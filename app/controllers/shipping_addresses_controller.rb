@@ -1,6 +1,6 @@
 class ShippingAddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_shipping_address, only: %i[ edit ]
+  before_action :set_shipping_address, only: %i[ edit update ]
 
   # GET /shipping_addresses/1/edit
   def edit

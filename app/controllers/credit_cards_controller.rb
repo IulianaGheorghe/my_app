@@ -1,6 +1,6 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_credit_card, only: %i[ edit ]
+  before_action :set_credit_card, only: %i[ edit update ]
 
   # GET /credit_cards/1/edit
   def edit
@@ -10,7 +10,7 @@ class CreditCardsController < ApplicationController
   def update
     respond_to do |format|
       if @credit_card.update(credit_card_params)
-        format.html { redirect_to credit_card_url(@credit_card), notice: "Credit card was successfully updated." }
+        format.html { redirect_to my_account_path, notice: "Credit card was successfully updated." }
         format.json { render :show, status: :ok, location: @credit_card }
       else
         format.html { render :edit, status: :unprocessable_entity }
