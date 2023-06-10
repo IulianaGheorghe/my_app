@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :shipping_address
   has_one :billing_address
   has_one :credit_card
+  has_one_attached :profile_picture
   has_many :orders
 
   devise :database_authenticatable, :registerable,

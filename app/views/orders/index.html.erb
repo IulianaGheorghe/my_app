@@ -1,9 +1,11 @@
 <div class="container mt-5">
-  <h2>Orders</h2>
+  <h2 class="font-effect-shadow-multiple" id="new-product-title">Orders</h2>
+  <br>
+  <%= render partial: 'filter_menu' %>
   <br>
   <%== pagy_info(@pagy) %>
   <br>
-  <table class="table table-warning table-striped">
+  <table class="table table-info table-striped">
     <thead>
       <tr>
         <th scope="col">ID</th>
