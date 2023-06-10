@@ -1,5 +1,5 @@
 <div style="margin: 30px;">
-    <% Product.find_each do |product| %>
+    <% @products.each do |product| %>
         <div class="card" style="float: left; width: 15rem; height:35rem; background-color: #FAFAD2; border-radius: 1rem; margin: 20px;">
             <%= image_tag product.image %>
             <div class="card-body">

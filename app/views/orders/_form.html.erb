@@ -1,17 +1,9 @@
-<%= form_with(model: order) do |form| %>
-  <% if order.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<%= form_for(@order) do |f| %>
+  <div class="form-outline mb-4">
+    <%= f.text_field :tracking_number, autofocus: true, required: true, class: "form-control", placeholder: "Tracking Number"%>
+  </div>
 
-      <ul>
-        <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= f.submit "Ship Now!", class: "btn btn-primary btn-block mb-4" %>
   </div>
 <% end %>

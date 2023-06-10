@@ -4,6 +4,10 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
     <div class="form-outline mb-4">
+      <%= f.label 'Profile picture', style: "color: sandybrown; font-family: 'Kalam', sans-serif;" %>
+      <%= f.file_field :profile_picture, {:class => "form-control", :id => "text-field"} %> </div>
+    <br>
+    <div class="form-outline mb-4">
       <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", autocomplete: "email", id: "text-field"%>
     </div>
     <br>
@@ -44,7 +48,8 @@
 
   <div style="text-align:center;">
     <span style="font-family: 'Sofia', sans-serif; font-size: 25px;">Unhappy?</span> 
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger", id: "back-button"  %>
+    <br>
+    <%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger", id: "back-button"  %>
   <div>
   <br><br>
   <%= link_to "Back", :back, class: "btn btn-warning", style: "float: left;" %>

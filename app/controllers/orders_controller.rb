@@ -16,11 +16,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
-  end
-
-  # GET /orders/new
-  def new
-    @order = Order.new
+    unless current_user.admin?
+      if (@order.user_id==current_user.id)
+        render :show
+      else
+        redirect_to orders_path
+      end
+    end
   end
 
   # GET /orders/1/edit
@@ -30,9 +32,9 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-
     respond_to do |format|
       if @order.save
+        OrderMailer.send_email(current_user, @order).deliver_now
         format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -45,8 +47,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
+      if order_params[:tracking_number].present? && @order.update(tracking_number: order_params[:tracking_number], status: "shipped")
+        format.html { redirect_to order_url(@order), notice: "Order was successfully shipped." }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }

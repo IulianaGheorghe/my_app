@@ -1,0 +1,22 @@
+<%= form_for(@credit_card) do |f| %>
+  <div class="form-outline mb-4">
+    <%= f.number_field :number, autofocus: true, required: true, class: "form-control", placeholder: "Credit Card Number", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.number_field :month, required: true, class: "form-control", placeholder: "Expiration Month", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.number_field :year, required: true, class: "form-control", placeholder: "Expiration Year", id: "text-field"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
+    <%= f.number_field :cvv, required: true, class: "form-control", placeholder: "CVV", id: "text-field"%>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= f.submit "Update", class: "btn btn-info btn-block mb-4" %>
+  </div>
+<% end %>

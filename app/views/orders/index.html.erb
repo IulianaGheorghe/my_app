@@ -1,9 +1,11 @@
 <div class="container mt-5">
-  <h2>Orders</h2>
+  <h2 class="font-effect-shadow-multiple" id="new-product-title">Orders</h2>
+  <br>
+  <%= render partial: 'filter_menu' %>
   <br>
   <%== pagy_info(@pagy) %>
   <br>
-  <table class="table table-warning table-striped">
+  <table class="table table-info table-striped">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -26,7 +28,10 @@
           <td><%= order.tracking_number %></td>
           <td><%= link_to 'Show', order, class: "btn btn-primary btn-sm", style: "margin:1px;" %>
             <% if current_user.present? && current_user.admin? %>
-              | <%= link_to 'Edit', edit_order_path(order), class: "btn btn-success btn-sm", style: "margin:1px;" %> | <%= link_to 'Destroy', order, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "margin:1px;" %>
+              <% if order.status == "not shipped" %>
+                <%= link_to 'Ship Now', edit_order_path(order), class: "btn btn-success btn-sm", style: "margin:1px;" %> 
+                <%= link_to 'Destroy', order, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "margin:1px;" %>
+              <% end %>
             <% end %>
           </td>
         </tr>

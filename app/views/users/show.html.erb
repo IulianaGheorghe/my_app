@@ -4,8 +4,11 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+            <% if @user.profile_picture.attached? then %>
+              <%=image_tag(@user.profile_picture, class: "rounded-circle img-fluid", style: "width: 150px;") %>
+            <% else %>
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <%end%>
             <h5 class="my-3"><%= @user.first_name + ' ' + @user.last_name %></h5>
             <p class="text-muted mb-1"><%= @user.email %></p>
             <p class="text-muted mb-4"><%= @user.phone_number %></p>
@@ -14,46 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-4 mb-md-0">
-          <div class="card-body">
-          <h5 class="mb-3">Credit Card</h5>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @user.first_name + ' ' + @user.last_name %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @user.email %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @user.phone_number %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= if @billing_address.street_address!=nil && @billing_address.state!=nil && @billing_address.country!=nil then @billing_address.street_address + ', ' + @billing_address.state + ', ' + @billing_address.country else "" end%></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render 'credit_card', credit_card: @credit_card %>
       </div>
       <div class="col-lg-8">
         <%= render 'address', address_type: "Shipping", address: @shipping_address, edit_link: edit_shipping_address_path(@shipping_address) %>
