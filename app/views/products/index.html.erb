@@ -2,6 +2,8 @@
   <h2 class="font-effect-shadow-multiple" id="new-product-title">Products</h2>
   <%= link_to 'New Product', new_product_path, class: "btn btn-info btn-lg btn-block", style: "margin-bottom: 25px;" %>
   <br>
+  <%= render "filter_menu" %>
+  <br>
   <%== pagy_info(@pagy) %>
   <table class="table table-info table-striped">
       <thead>
