@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   
     private
       def check_admin
-        if current_user.role != 'admin'
-          redirect_to root_path
+        unless current_user.admin?
+          respond_to do |format|
+            format.html { redirect_to root_path, status: :unprocessable_entity }
+          end
           return
         end
       end
