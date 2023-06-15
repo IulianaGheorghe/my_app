@@ -1,0 +1,33 @@
+<!-- _filter_menu.html.erb -->
+<%= form_tag products_by_category_path, method: :get, class: 'form-inline', id: 'orders-form' do %>
+
+  <div class="form-group mb-2" style="margin-left: 20px;">
+    <% if params[:category_name].present? %>
+      <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">
+        <%= select_tag :category_name, options_for_select([params[:category_name]], params[:category_name]), style: "background-color: none; font-weight: bold; color: #996515; border-color: white; appearance: none; text-indent: 4px;"%>
+        Perfumes
+      </h1>
+      <br><br>
+    <% end %>
+    <% if params[:search].present? %>
+      <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">
+        Results for 
+        <%= select_tag :search, options_for_select([params[:search]], params[:search]), style: "background-color: none; font-weight: bold; color: #996515; border-color: white; appearance: none; text-indent: 4px;"%>
+      </h1>
+      <br><br>
+      <%= label_tag :category_id, 'Filter by category:', class: 'golden-text' %>
+      <%= select_tag :category_id, options_for_select(Category.all.pluck(:name, :id), params[:category_id]), {:prompt => 'All', :class => 'select-button'}%>
+    <% end %>
+    <%= label_tag :brand, 'Filter by brand:', class: 'golden-text' %>
+    <%= select_tag :brand, options_for_select(@products.distinct.pluck(:brand).sort, params[:brand]), {:prompt => 'All', :class => 'select-button'}%>
+
+    <%= label_tag :perfumetype, 'Filter by type:', class: 'golden-text' %>
+    <%= select_tag :perfumetype, options_for_select(@products.distinct.pluck(:perfumetype), params[:perfumetype]), {:prompt => 'All', :class => 'select-button'}%>
+
+    <%= label_tag :sort_by_price, 'Sort by price:', class: 'golden-text' %>
+    <%= select_tag :sort_by_price, options_for_select(['Ascending', 'Descending'], params[:sort_by_price]), {:prompt => 'All', :class => 'select-button'}%>
+
+    <%= submit_tag 'Filter', class: 'gold-button' %>
+  </div>
+
+<% end %>

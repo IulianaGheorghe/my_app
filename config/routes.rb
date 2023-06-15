@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get 'log_out', to: 'extra#new'
   get 'accounts', to: 'users#index', as: "users"
   get 'my_account', to: 'users#show'
+  get 'products_by_category', to: 'products_by_category#new'
 
 end
