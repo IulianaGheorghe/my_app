@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<div>
+
+  <h1 class="shadow-text" style="margin-top: 35px; margin-bottom: 50px;">
+    <%= image_tag('shopping-bag.png', alt: 'cart', id: 'cart', style: "height: 50px; margin-bottom: 10px;") %>
+    Shopping cart
+  </h1>
+
+  <% if @cart.orderables.present? %>
+    <%= render @cart %>
+  <% else %>
+    <p style="text-align: center;">
+      <%= image_tag('empty-cart-gold.png', alt: 'cart', id: 'cart', style: "height: 500px;") %> 
+    </p>
+  <% end %>
+
+</div>

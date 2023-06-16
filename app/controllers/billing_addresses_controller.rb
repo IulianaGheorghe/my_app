@@ -10,7 +10,7 @@ class BillingAddressesController < ApplicationController
   def update
     respond_to do |format|
       if @billing_address.update(billing_address_params)
-        format.html { redirect_to billing_address_url(@billing_address), notice: "Billing address was successfully updated." }
+        format.html { redirect_to my_account_path, notice: "Billing address was successfully updated." }
         format.json { render :show, status: :ok, location: @billing_address }
       else
         format.html { render :edit, status: :unprocessable_entity }

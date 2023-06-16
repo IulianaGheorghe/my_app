@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :carts
   resources :credit_cards
   resources :orders
   resources :billing_addresses
@@ -19,5 +20,9 @@ Rails.application.routes.draw do
   get 'accounts', to: 'users#index', as: "users"
   get 'my_account', to: 'users#show'
   get 'products_by_category', to: 'products_by_category#new'
+  get 'my_cart', to: 'carts#show'
+  post 'carts/add'
+  post 'carts/remove'
+  post 'carts/update_quantity'
 
 end

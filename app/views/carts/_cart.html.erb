@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "cart" do %>
+
+    <div style="margin-left: 10%; margin-right: 10%;">
+        <%= render "orderables" %>
+    </div>
+    <h1 style="float:right; margin-right: 10%; font-family: 'Lobster', sans-serif;"> Total: €<%= @cart.total %> </h1>
+    <%= button_to 'Place order', orders_path(order: { user_id: current_user.id, product_id: @product.id }), 
+                            data: {turbo_method: :post, turbo_confirm: "Are you sure you want to buy #{@product.name} perfume?"}, 
+                            class: "gold-button", style: "font-family: 'Dancing Script', cursive;" %>
+                            
+<% end %>

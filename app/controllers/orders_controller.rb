@@ -31,15 +31,23 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
-    respond_to do |format|
-      if @order.save
-        OrderMailer.send_email(current_user, @order).deliver_now
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    if (!current_user.shipping_address.city.present?)
+      redirect_to my_account_path, danger: "To make a purchase you have to complete your shipping address details first!"
+    elsif (!current_user.billing_address.city.present?)
+      redirect_to my_account_path, danger: "To make a purchase you have to complete your billing address details first!"
+    elsif (!current_user.credit_card.number.present?)
+      redirect_to my_account_path, danger: "To make a purchase you have to complete your credit card details first!"
+    else
+      @order = Order.new(order_params)
+      respond_to do |format|
+        if @order.save
+          OrderMailer.send_email(current_user, @order).deliver_now
+          format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
+          format.json { render :show, status: :created, location: @order }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

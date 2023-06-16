@@ -10,7 +10,7 @@ class ShippingAddressesController < ApplicationController
   def update
     respond_to do |format|
       if @shipping_address.update(shipping_address_params)
-        format.html { redirect_to shipping_address_url(@shipping_address), notice: "Shipping address was successfully updated." }
+        format.html { redirect_to my_account_path, notice: "Shipping address was successfully updated." }
         format.json { render :show, status: :ok, location: @shipping_address }
       else
         format.html { render :edit, status: :unprocessable_entity }
