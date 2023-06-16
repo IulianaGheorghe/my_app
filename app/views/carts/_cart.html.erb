@@ -4,8 +4,8 @@
         <%= render "orderables" %>
     </div>
     <h1 style="float:right; margin-right: 10%; font-family: 'Lobster', sans-serif;"> Total: €<%= @cart.total %> </h1>
-    <%= button_to 'Place order', orders_path(order: { user_id: current_user.id, product_id: @product.id }), 
-                            data: {turbo_method: :post, turbo_confirm: "Are you sure you want to buy #{@product.name} perfume?"}, 
-                            class: "gold-button", style: "font-family: 'Dancing Script', cursive;" %>
-                            
+    <br><br><br>
+    <%= button_to 'PLACE ORDER', orders_path(order: { user_id: current_user.id }), 
+                            data: {turbo_method: :post, turbo_confirm: "Are you sure you want to order?"}, class: "order-button"%>
+
 <% end %>

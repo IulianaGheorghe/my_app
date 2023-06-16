@@ -19,6 +19,8 @@ class CartsController < ApplicationController
 
     if @cart.save
       redirect_to product_url(@product), success: "Product successfully added to cart!"
+    else
+      redirect_to product_url(@product), danger: "Product couldn't be added to cart! " 
     end
   end
 

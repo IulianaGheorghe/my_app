@@ -99,10 +99,6 @@ em {
     text-shadow: 3px 3px 3px #ababab;
 }
 
-#cart-table {
-    margin-right: 200px;
-}
-
 td {
     text-align: center;
     vertical-align: middle;
@@ -110,4 +106,16 @@ td {
 
 th {
     text-align: center;
+}
+
+.order-button {
+    background-color: #C09040;
+    border-radius: 10px;
+    border-color: #C09040;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Montserrat', cursive;
+    color: #0C0B10; 
+    font-weight: bold; 
+    margin-left: 77%; 
 }

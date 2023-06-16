@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   include Pagy::Backend
   # GET /orders or /orders.json
   def index
-    orders = Order.includes(:product, :user).all
+    orders = Order.includes(:user).all
     unless current_user.admin?
       orders = orders.where(user_id: current_user.id)
     end
@@ -39,8 +39,16 @@ class OrdersController < ApplicationController
       redirect_to my_account_path, danger: "To make a purchase you have to complete your credit card details first!"
     else
       @order = Order.new(order_params)
+      @user = User.find_by_id(order_params[:user_id])
       respond_to do |format|
         if @order.save
+
+          @user.cart.orderables.each do |orderable| 
+            @product = Product.find_by(id: orderable.product.id)
+            @order.ordered_products.create(product: @product, quantity: orderable.quantity)
+            Orderable.find_by(id: orderable.id).destroy
+          end
+
           OrderMailer.send_email(current_user, @order).deliver_now
           format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
           format.json { render :show, status: :created, location: @order }
@@ -83,6 +91,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:id, :user_id, :product_id, :status, :tracking_number)
+      params.require(:order).permit(:id, :user_id, :status, :tracking_number)
     end
 end

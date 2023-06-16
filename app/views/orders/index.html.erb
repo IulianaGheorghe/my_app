@@ -10,8 +10,6 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">User</th>
-        <th scope="col">Product</th>
-        <th scope="col">Quantity</th>
         <th scope="col">Status</th>
         <th scope="col">Tracking Number</th>
         <th scope="col">Actions</th>
@@ -22,8 +20,6 @@
         <tr>
           <td><%= order.id %></td>
           <td><%= order.user.email %></td>
-          <td><%= order.product.name %></td>
-          <td><%= order.quantity %></td>
           <td><%= order.status %></td>
           <td><%= order.tracking_number %></td>
           <td><%= link_to 'Show', order, class: "btn btn-primary btn-sm", style: "margin:1px;" %>

@@ -27,32 +27,51 @@
   <body>
     <div class="container">
       <h1 class="text-center mb-4">Invoice for order #<%= @order.id %></h1>
-      <table class="invoice-table">
+      <br><br><br>
+      <div style="display:inline-block;">
+        <p style="font-weight: bold;">BILL TO</p>
+        <p>Street Address: <%= @order.user.billing_address.street_address %> </p>
+        <p>City: <%= @order.user.billing_address.city %></p>
+        <p>State: <%= @order.user.billing_address.state %></p>
+        <p>Postal Code: <%= @order.user.billing_address.postal_code %></p>
+        <p>Country: <%= @order.user.billing_address.country %></p>
+      </div>
+      <div style="display:inline-block; margin-left: 100px;">
+        <p style="font-weight: bold;">SHIP TO</p>
+        <p>Street Address: <%= @order.user.shipping_address.street_address %> </p>
+        <p>City: <%= @order.user.shipping_address.city %></p>
+        <p>State: <%= @order.user.shipping_address.state %></p>
+        <p>Postal Code: <%= @order.user.shipping_address.postal_code %></p>
+        <p>Country: <%= @order.user.shipping_address.country %></p>
+      </div>
+      <br><br><br>
+      <table class="invoice-table" style="background-color: #FAFAD2">
         <thead>
           <tr>
-            <th>Product Name</th>
-            <th>Designer</th>
-            <th>Price</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><%= @product.name %></td>
-            <td><%= @product.brand %></td>
-            <td><%= @product.price %></td>
-          </tr>
+          <% @order.ordered_products.each do |ordered| %>
+            <% product = ordered.product %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= ordered.quantity %></td>
+              <td>€<%= product.price %></td>
+              <td>€<%= ordered.total %></td>
+            </tr>
+          <% end %>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2" class="text-right invoice-total">Total:</td>
-            <td class="invoice-total"><%= @product.price %></td>
+            <td colspan="3" class="text-right invoice-total">Total:</td>
+            <td class="invoice-total">€<%= @order.total %></td>
           </tr>
         </tfoot>
       </table>
-      <br>
-      <div class="text-center mb-4">
-        <%= image_tag @product.image, class: 'company-logo' %>
-      </div>
     </div>
   </body>
 </html>
