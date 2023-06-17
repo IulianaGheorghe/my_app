@@ -18,9 +18,9 @@
   <%= render partial: 'ordered_products' %>
   <h2 style="float:right; font-family: 'Lobster', sans-serif;"> Total: €<%= @order.total %> </h2>
   <br><br><br>
-  <% if current_user.admin? %>
-    <%= link_to 'Edit', edit_order_path(@order) %> |
-  <% end %>
   <%= link_to 'Back To Orders', orders_path, class: "gold-button", style: "color: black; text-decoration-color: #C09040; padding: 6px;" %>
+  <% if current_user.admin? && @order.status == "not shipped" %>
+    <%= link_to 'Edit', edit_order_path(@order), class: "gold-button-without-underline", style: "color: black; margin-left: 10px;"  %> 
+  <% end %>
 
 </div>

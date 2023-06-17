@@ -1,10 +1,15 @@
-<h1>Editing order</h1>
+<div class="product">
 
-<%= render "form", order: @order %>
+  <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px; margin-bottom: 50px;">Editing order</h1>
 
-<br>
+  <%= render "form", order: @order %>
 
-<div>
-  <%= link_to "Show this order", @order %> |
-  <%= link_to "Back to orders", orders_path %>
+  <br>
+
+  <div>
+    <%= link_to "Back to orders", orders_path, class: "gold-button-without-underline", style: "color: black;" %>
+    <%= link_to "Show this order", @order, class: "gold-button-without-underline", style: "float: right; color: black;" %> 
+  </div>
+    
 </div>
+

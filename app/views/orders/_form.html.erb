@@ -1,9 +1,9 @@
 <%= form_for(@order) do |f| %>
   <div class="form-outline mb-4">
-    <%= f.text_field :tracking_number, autofocus: true, required: true, class: "form-control", placeholder: "Tracking Number"%>
+    <%= f.text_field :tracking_number, autofocus: true, required: true, class: "form-control", placeholder: "Tracking Number", id: "text-field"%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Ship Now!", class: "btn btn-primary btn-block mb-4" %>
+    <%= f.submit "Ship Now!", class: "btn btn-info btn-block mb-4" %>
   </div>
 <% end %>

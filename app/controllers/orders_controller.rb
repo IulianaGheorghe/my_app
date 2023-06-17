@@ -75,7 +75,9 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
+    ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF;")
     @order.destroy
+    ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;") # Re-enable foreign key constraints
 
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
