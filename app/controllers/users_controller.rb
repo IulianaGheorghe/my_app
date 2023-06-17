@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       address.save
       @user.shipping_address = address
     end
+
     if @user.billing_address.nil?
       address = BillingAddress.create(user_id: @user.id)
       address.save

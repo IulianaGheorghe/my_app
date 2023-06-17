@@ -1,0 +1,44 @@
+<table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align: left;">Your Order</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.orderables.each do |orderable| %>
+            <% product = orderable.product %>
+            <tr>
+                <td style="text-align: left;"> 
+                    <div class="row">
+                        <div class="column" style="float: left; width: 25%;">
+                            <%= image_tag(product.image, width: "100", height: "100")%>
+                        </div>
+                        <div class="column" style="float: left; width: 40%;">
+                            <h6 style="font-family: 'Montserrat', sans-serif;"><%= product.brand %></h6>
+                            <h4 style="font-family: 'Montserrat', sans-serif; text-shadow: 0.4px 0.4px 0.4px black;"><%= product.name %></h4>
+                            <p style="font-family: 'Montserrat', sans-serif;"><%= product.perfumetype %> - <%= product.quantity %> ml</p>
+                        </div>
+                    </div>
+                </td>
+                <td><h6 style="font-family: 'Montserrat', sans-serif;">€<%= product.price %></h6></td>
+                <td>
+                    <%= form_with(url: carts_update_quantity_path) do |f| %>
+                        <%= f.hidden_field :id, value: product. id %>
+                        <%= f.number_field :quantity, value: orderable.quantity, min: 1, style: "border-radius: 5px; border-color: transparent; outline-style: solid; outline-color: black; outline-width: thin; padding-top:3px; padding-bottom:3px;" %> 
+                        <%= f.submit "Update", onclick: my_cart_path, class: "gold-button", style: "font-family: 'Dancing Script', cursive;" %>
+                    <% end %>  
+                </td>
+                <td><h6 style="font-family: 'Montserrat', sans-serif;">€<%= orderable.total %></h6></td>
+                <td>
+                    <%= form_with(url: carts_remove_path) do |f| %>
+                        <%= f.hidden_field :id, value: orderable.id %> 
+                        <%= f.submit "X", style: "border-radius: 50%; height:30px; width:30px; background-color: #C09040; font-weight: 800;" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %> 
+    </tbody>
+</table>

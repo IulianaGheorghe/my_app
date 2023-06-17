@@ -2,36 +2,46 @@
 
 <%= render @product %>
 
-<div class="card" style="width: 30rem; margin:auto; background-color: #FAFAD2">
-  <%= image_tag(@product.image)%>
-  <div class="card-body">
-    <h5 class="card-title", style="opacity: 0.8;"><%= @product.brand %></h5>
-    <h3 class="card-title"><%= @product.name %></h3>
-    <h6 class="card-title", style="opacity: 0.5;"><%= @product.perfumetype %></h6>
-    <br>
-    <p class="card-text"><%= @product.description %></p>
-    <h5 class="card-title">Olfactory notes:</h5>
-    <p class="card-text"><%= @product.notes %></p>
-  </div>
-  <div style="display: flex; margin: 15px;">
-    <h2><%= @product.quantity %> ml</h2>
-    <h2 style="margin-left: auto;"><%= @product.price %>€</h2>
-  </div>
-  <% if user_signed_in? && current_user.role == 'admin'%>
-    <div class="card-body", style="display: flex; justify-content: space-between; margin-top: 10px;">
-      <%= link_to 'Back', products_path, class: "btn btn-warning" %>
-      <%= button_to "Destroy this product", @product, method: :delete, class: "btn btn-danger" %>
-      <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-info" %>
-    </div>
-  <% else %>
-    <div class="text-center total font-weight-bold mt-4">
-      <% if current_user.present? %>
-        <%= button_to 'Buy Now!', orders_path(order: { user_id: current_user.id, product_id: @product.id }), data: {turbo_method: :post, turbo_confirm: "Are you sure you want to buy #{@product.name} perfume?"}, class: "btn btn-info", style: "margin:10px 100px 20px 100px; border-radius: 1rem;" %>
+<div class="card" style="margin: 30px; padding: 0 20px 0 0; background-color: #FAFAD2; font-family: 'Montserrat', cursive;">
+  <div style="display: flex;">
+    <%= image_tag(@product.image, height: '600px', style: "float: left; display: inline;")%>
+    <div style="overflow: hidden;">
+      <div class="card-body">
+        <h5 class="card-title" style="opacity: 0.8;"><%= @product.brand %></h5>
+        <h3 class="card-title" style="text-shadow: 0.4px 0.4px 0.4px black;"><%= @product.name %></h3>
+        <h6 class="card-title" style="opacity: 0.5;"><%= @product.perfumetype %></h6>
+        <br>
+        <p class="card-text"><%= @product.description %></p>
+        <br>
+        <h5 class="card-title">Olfactory notes:</h5>
+        <p class="card-text"><%= @product.notes %></p>
+      </div>
+      <div style="display: flex; margin: 15px; text-shadow: 0.4px 0.4px 0.4px black;">
+        <h1><%= @product.quantity %> ml</h1>
+        <h1 style="margin-left: auto;"><%= @product.price %>€</h1>
+      </div>
+      <% if user_signed_in? && current_user.role == 'admin' %>
+        <div class="card-body" style="display: flex; justify-content: space-between; margin-top: 10px;">
+          <%= link_to 'Back', products_path, class: "btn btn-warning" %>
+          <%= button_to "Destroy this product", @product, method: :delete, class: "btn btn-danger" %>
+          <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-info" %>
+        </div>
       <% else %>
-        <p class="text-muted mb-0">You need to be logged in to order!</p>
+        <div class="text-center total font-weight-bold mt-4">
+          <% if current_user.present? %>
+            <%= form_with(url: carts_add_path) do |f| %>
+              <%= f.hidden_field :id, value: @product.id %>
+              <%= f.hidden_field :quantity, value: 1 %>
+              <%= f.submit "Add To Cart", class: "gold-button", style: "width: 100%; font-family: 'Kalam', cursive; font-size: 30px;" %>
+            <% end %>
+          <% else %>
+            <p class="text-muted mb-0">You need to be logged in to order!</p>
+          <% end %>
+        </div>
+        <br><br>
+        <%= link_to 'BACK', root_path, class: "gold-button-without-underline", style: "margin-left: 90%;"%>
       <% end %>
     </div>
-    <%= link_to 'Back', root_path, class: "btn btn-warning btn-sm", style: "margin:40px 400px 20px 10px; border-radius: 1rem;"%>
-  <% end %>
+  </div>
 </div>
 

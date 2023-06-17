@@ -61,3 +61,84 @@ em {
     font-size: 15px;
     margin-top: 20px;
 }
+
+.select-button {
+    background-color: #FAFAD2;
+    color: #996515;
+    height: 35px;
+    border-radius: 7px;
+    border-color: #C09040;
+    margin-right: 15px;
+}
+
+.gold-button {
+    background-color: #C09040;
+    border-radius: 10px;
+    border-color: #C09040;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Sofia', cursive;
+    color: #0C0B10; 
+    font-weight: bold; 
+} 
+
+.golden-text {
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    color: #C09040; 
+}
+
+#cart {
+    height: 40px; 
+}
+
+.shadow-text {
+    text-align: center;
+    font-family: "Sofia", sans-serif;
+    font-size: 60px;
+    text-shadow: 3px 3px 3px #ababab;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    text-align: center;
+}
+
+.order-button {
+    background-color: #C09040;
+    border-radius: 10px;
+    border-color: #C09040;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Montserrat', cursive;
+    color: #0C0B10; 
+    font-weight: bold; 
+    margin-left: 77%; 
+}
+
+.home-title {
+    position: absolute; 
+    top: 15%; 
+    left: 35%; 
+    color: #C09040;
+    font-size: 70px;
+    font-family: 'Sofia', cursive;
+    font-weight: bold;
+}
+
+.gold-button-without-underline {
+    background-color: #C09040;
+    border-radius: 10px;
+    border-color: #C09040;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold; 
+    color: black; 
+    text-decoration-color: #C09040; 
+    padding: 6px; 
+    font-family: 'Kalam', cursive; 
+}

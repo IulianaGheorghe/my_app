@@ -1,8 +1,8 @@
 <%= form_tag orders_path, method: :get, class: 'form-inline', id: 'orders-form' do %>
   <div class="form-group mb-2">
-    <%= label_tag :status, 'Filter by status:' %>
-    <%= select_tag :status, options_for_select(['shipped', 'not shipped'], params[:status]), prompt: 'All'%>
-    <%= submit_tag 'Filter', class: 'btn btn-primary mb-2' %>
+    <%= label_tag :status, 'Filter by status:', class: 'golden-text' %>
+    <%= select_tag :status, options_for_select(['shipped', 'not shipped'], params[:status]), {:prompt => 'All', :class => 'select-button'}%>
+    <%= submit_tag 'Filter', class: 'gold-button' %>
   </div>
 
 <% end %>
