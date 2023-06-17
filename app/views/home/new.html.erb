@@ -1,17 +1,24 @@
-<div style="margin: 30px;">
-    <% @products.each do |product| %>
-        <div class="card" style="float: left; width: 15rem; height:35rem; background-color: #FAFAD2; border-radius: 1rem; margin: 20px;">
-            <%= image_tag product.image %>
-            <div class="card-body">
-                <h5 class="card-title", style="opacity: 0.8;"><%= product.brand %></h5>
-                <h3 class="card-title"><%= product.name %></h3>
-                <h6 class="card-title", style="opacity: 0.5;"><%= product.perfumetype %></h6>
-            </div>
-            <div style="display: flex; margin: 15px;">
-                <h3><%= product.quantity %> ml</h3>
-                <h3 style="margin-left: auto;"><%= product.price %>€</h3>
-            </div>
-            <%= link_to 'Show', product, class: "btn btn-info btn-sm", style: "margin:2px 30px 20px 30px; border-radius: 1rem;"%> 
+<div>
+  <%= image_tag("c.jpg", width: "100%")%>
+  <h1 class="home-title">Scented Dreams</h1>
+</div>
+
+<div style="margin: 100px 150px 100px 150px;">
+    <div style="display: flex;">
+        <div style="margin-left: 20%;">
+            <%= link_to image_tag("for-her.jpg", alt: "for-her", height: "300px"), products_by_category_path(:category_name => "Women") %> 
+            <h1 style="font-family: 'Sofia', cursive; font-weight: bold;">For Her</h1>
         </div>
-    <% end %>
+        <div style="margin-left: 10%;">
+            <%= link_to image_tag("for-him.jpg", alt: "for-him", height: "300px"), products_by_category_path(:category_name => "Men") %> 
+            <h1 style="font-family: 'Sofia', cursive; font-weight: bold;">For Him</h1>
+        </div>
+    </div>
+    <div style="text-align:center; margin-top: 100px;">
+    <p style="font-weight: bold;">ABOUT SCENTED DREAMS</p>
+    <p>For 30 years we have been selling the widest range of women's perfumes and men's aftershaves at affordable prices. We stock the fragrances of nearly 130 brands including Hugo Boss, Paco Rabanne, Gucci, Ariana Grande, Mugler and Marc Jacobs both online and across our network of over 215 nationwide stores. We also stock the luxury perfume brands Dior, Tom Ford, Viktor & Rolf, Hermès and Maison Margiela.
+</p>
+    <p>Not only do we have the experience of selling perfumes, we also have the expertise to match. Our staff are trained and developed so that they are the most knowledgeable sales advisors within the perfume industry, we have the largest number of Fragrance Foundation fragrance graduates nationwide and a fragrance finder to guide your online shopping.
+</p>
+    </div>
 </div>
