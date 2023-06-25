@@ -3,16 +3,16 @@
 
   <div class="form-group mb-2" style="margin-left: 20px;">
     <% if params[:category_name].present? %>
-      <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">
-        <%= select_tag :category_name, options_for_select([params[:category_name]], params[:category_name]), style: "background-color: none; font-weight: bold; color: #996515; border-color: white; appearance: none; text-indent: 4px;"%>
-        Perfumes
+      <%= hidden_field_tag :category_name, params[:category_name] %>
+      <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">        
+        <%= params[:category_name] %> Perfumes
       </h1>
       <br><br>
     <% end %>
     <% if params[:search].present? %>
+      <%= hidden_field_tag :search, params[:search] %>
       <h1 style="color: #996515; text-align: center; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">
-        Results for 
-        <%= select_tag :search, options_for_select([params[:search]], params[:search]), style: "background-color: none; font-weight: bold; color: #996515; border-color: white; appearance: none; text-indent: 4px;"%>
+        Results for <%= params[:search] %>
       </h1>
       <br><br>
       <%= label_tag :category_id, 'Filter by category:', class: 'golden-text' %>

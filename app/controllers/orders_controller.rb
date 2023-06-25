@@ -85,6 +85,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def export_csv
+    csv_data = CSV.generate do |csv|
+      csv << ["ID", "User", "Status", "Tracking Number"]
+
+      orders = Order.includes(:user).all
+      orders.each do |order|
+        csv << [order.id, order.user.email, order.status, order.tracking_number]
+      end
+    end
+    headers['Content-Type'] = 'text/csv'
+    headers['Content-Disposition'] = "attachment; filename=orders-#{Date.today.to_s}.csv"
+    render plain: csv_data
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

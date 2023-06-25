@@ -28,14 +28,18 @@
         </div>
       <% else %>
         <div class="text-center total font-weight-bold mt-4">
-          <% if current_user.present? %>
-            <%= form_with(url: carts_add_path) do |f| %>
-              <%= f.hidden_field :id, value: @product.id %>
-              <%= f.hidden_field :quantity, value: 1 %>
-              <%= f.submit "Add To Cart", class: "gold-button", style: "width: 100%; font-family: 'Kalam', cursive; font-size: 30px;" %>
-            <% end %>
+          <% if @product.stock == 0 %>
+            <p style="color: red; font-weight: bold;">The product is out of stock!</p>
           <% else %>
-            <p class="text-muted mb-0">You need to be logged in to order!</p>
+            <% if current_user.present? %>
+              <%= form_with(url: carts_add_path) do |f| %>
+                <%= f.hidden_field :id, value: @product.id %>
+                <%= f.hidden_field :quantity, value: 1 %>
+                <%= f.submit "Add To Cart", class: "gold-button", style: "width: 100%; font-family: 'Kalam', cursive; font-size: 30px;" %>
+              <% end %>
+            <% else %>
+              <p class="text-muted mb-0">You need to be logged in to order!</p>
+            <% end %>
           <% end %>
         </div>
         <br><br>

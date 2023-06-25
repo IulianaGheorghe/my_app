@@ -142,3 +142,22 @@ th {
     padding: 6px; 
     font-family: 'Kalam', cursive; 
 }
+
+.gold-title {
+    color: #996515; 
+    text-align: center; 
+    font-family: 'Satisfy', cursive; 
+    font-weight: bold; 
+    font-size: 50px;
+}
+
+#new-button {
+    margin-bottom: 25px; 
+    background-color: #EEE8AA; 
+    border-color: #C09040; 
+    box-shadow: 0 7px 15px 0 #C09040;
+}
+
+#new-button:hover {
+    box-shadow: 0 5px 5px 0 #C09040, 0 7px 15px 0 #C09040;
+}

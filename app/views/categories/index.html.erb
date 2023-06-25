@@ -1,8 +1,9 @@
 <div class="container mt-5">
-  <h2 class="font-effect-shadow-multiple" id="new-product-title">Categories</h2>
-  <%= link_to 'New Category', new_category_path, class: "btn btn-info btn-lg btn-block", style: "margin-bottom: 25px;" %>
+  <h2 class="gold-title">Categories</h2>
   <br>
-  <table class="table table-info table-striped">
+  <%= link_to 'New Category', new_category_path, class: "btn btn-info btn-lg btn-block", id: "new-button" %>
+  <br>
+  <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -18,7 +19,7 @@
             <td><%= category.id %></td>
             <td><%= category.name %></td>
             <td><%= category.description %></td>
-            <td><%= link_to "View #{category.product.count} Products", products_path(category_id: category.id) %></td>
+            <td><%= link_to "View #{category.product.count} Products", products_path(category_id: category.id), style: "color: black; font-weight: 600;" %></td>
             <td>
               <%= link_to 'Show', category, class: "btn btn-primary btn-sm", style: "margin:2px;" %>  
               <%= link_to 'Edit', edit_category_path(category), class: "btn btn-success btn-sm", style: "margin:2px;" %> 
