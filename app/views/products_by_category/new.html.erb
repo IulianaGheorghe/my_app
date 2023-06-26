@@ -14,7 +14,20 @@
                 <h3><%= product.quantity %> ml</h3>
                 <h3 style="margin-left: auto;"><%= product.price %>€</h3>
             </div>
-            <%= link_to 'Show', product, class: "btn btn-info btn-sm", style: "margin:2px 30px 20px 30px; border-radius: 1rem;"%> 
+            <div style="display: flex; margin: 10px;">
+                <%= link_to 'Show', product, class: "btn btn-info btn-sm", style: "margin:0px 10px 20px 10px; border-radius: 1rem;  width: 75%;"%>
+                <% if current_user.wishlist_products.find_by(product_id: product.id) %> 
+                    <%= form_with(url: wishlist_product_remove_path) do |f| %>
+                        <%= f.hidden_field :id, value: product.id %>
+                        <%= f.submit "❤️", style: "background-color: transparent; border-color: transparent; font-size: 25px; margin-top: -8px" %>
+                    <% end %>
+                <% else %>
+                    <%= form_with(url: wishlist_product_add_path) do |f| %>
+                        <%= f.hidden_field :id, value: product.id %>
+                        <%= f.submit "🤍", style: "background-color: transparent; border-color: transparent; font-size: 25px; margin-top: -8px" %>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
     <% end %>
 </div>

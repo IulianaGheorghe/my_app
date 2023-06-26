@@ -32,11 +32,24 @@
             <p style="color: red; font-weight: bold;">The product is out of stock!</p>
           <% else %>
             <% if current_user.present? %>
-              <%= form_with(url: carts_add_path) do |f| %>
-                <%= f.hidden_field :id, value: @product.id %>
-                <%= f.hidden_field :quantity, value: 1 %>
-                <%= f.submit "Add To Cart", class: "gold-button", style: "width: 100%; font-family: 'Kalam', cursive; font-size: 30px;" %>
-              <% end %>
+              <div style="display: flex;">
+                <% if current_user.wishlist_products.find_by(product_id: @product.id) %> 
+                    <%= form_with(url: wishlist_product_remove_path) do |f| %>
+                        <%= f.hidden_field :id, value: @product.id %>
+                        <%= f.submit "❤️", style: "background-color: transparent; border-color: transparent; font-size: 40px; margin-top: -8px" %>
+                    <% end %>
+                <% else %>
+                    <%= form_with(url: wishlist_product_add_path) do |f| %>
+                        <%= f.hidden_field :id, value: @product.id %>
+                        <%= f.submit "🤍", style: "background-color: transparent; border-color: transparent; font-size: 40px; margin-top: -8px" %>
+                    <% end %>
+                <% end %>
+                <%= form_with(url: carts_add_path) do |f| %>
+                  <%= f.hidden_field :id, value: @product.id %>
+                  <%= f.hidden_field :quantity, value: 1 %>
+                  <%= f.submit "Add To Cart", class: "gold-button", style: "margin:0px 10px 20px 10px; width: 735px; font-family: 'Kalam', cursive; font-size: 30px;" %>
+                <% end %>
+                </div>
             <% else %>
               <p class="text-muted mb-0">You need to be logged in to order!</p>
             <% end %>

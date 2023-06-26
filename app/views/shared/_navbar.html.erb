@@ -24,9 +24,9 @@
             <li class="nav-item"> <%= link_to "Products", products_path, class: "nav-link", id: "nav-link-text" %></li>
             <li class="nav-item"><%= link_to "Orders", orders_path, class: "nav-link", id: "nav-link-text" %></li>
           <% else %>
-            <li class="nav-item"><%= link_to "My Account", my_account_path, class: "nav-link", id: "nav-link-text" %></li>
             <li class="nav-item"><%= link_to "My Orders", orders_path(user_id: current_user.id), class: "nav-link", id: "nav-link-text" %></li>
           <% end %>
+          <li class="nav-item"><%= link_to "My Account", my_account_path, class: "nav-link", id: "nav-link-text" %></li>
         <% end %>
         <% if !(current_user.present? && current_user.admin?) %>
           <%= form_tag(products_by_category_path, method: :get) do %>
@@ -47,7 +47,14 @@
             <%= link_to "Sign Out", destroy_user_session_path, 'data-turbo-method': :delete , id: "sign-out-button-text"%> 
           </div>
           <% if !current_user.admin?%>
-            <%= link_to image_tag("shopping-bag-gold.png", alt: "cart", id: "cart"), my_cart_path %> 
+            <div style="position: relative; margin-right: 10px;">
+              <%= link_to image_tag("shopping-bag-gold.png", alt: "cart", id: "cart"), my_cart_path %> 
+              <p class="circle"><%= if current_user.cart.present? then current_user.cart.orderables.count else 0 end %></p>
+            </div>
+            <div style="position: relative;">
+              <%= link_to '💛', wishlist_path, style: "text-decoration-color: transparent; font-size: 27px;"%>
+              <p class="circle"><%= if current_user.wishlist_products.present? then current_user.wishlist_products.count else 0 end %></p>
+            </div>
           <% end %>
         <% end %>
       </div>

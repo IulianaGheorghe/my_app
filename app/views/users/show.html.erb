@@ -1,28 +1,46 @@
 <section>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-            <% if @user.profile_picture.attached? then %>
-              <%=image_tag(@user.profile_picture, class: "rounded-circle img-fluid", style: "width: 150px;") %>
-            <% else %>
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <%end%>
-            <h5 class="my-3"><%= @user.first_name + ' ' + @user.last_name %></h5>
-            <p class="text-muted mb-1"><%= @user.email %></p>
-            <p class="text-muted mb-4"><%= @user.phone_number %></p>
-            <div class="d-flex justify-content-center mb-2">
-              <%= button_to 'Edit', edit_user_registration_path(@user), method: :get, class: "btn btn-primary" %></td>
-            </div>
-          </div>
+  <% if current_user.admin? %>
+    <div class="container py-5">
+      <div class="card-body text-center">
+        <% if @user.profile_picture.attached? then %>
+          <%=image_tag(@user.profile_picture, class: "rounded-circle img-fluid", style: "width: 150px;") %>
+        <% else %>
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+        <%end%>
+        <h5 class="my-3"><%= @user.first_name + ' ' + @user.last_name %></h5>
+        <p class="text-muted mb-1"><%= @user.email %></p>
+        <p class="text-muted mb-4"><%= @user.phone_number %></p>
+        <div class="d-flex justify-content-center mb-2">
+          <%= button_to 'Edit', edit_user_registration_path(@user), method: :get, class: "btn btn-primary" %></td>
         </div>
-        <%= render 'credit_card', credit_card: @credit_card %>
-      </div>
-      <div class="col-lg-8">
-        <%= render 'address', address_type: "Shipping", address: @shipping_address, edit_link: edit_shipping_address_path(@shipping_address) %>
-        <%= render 'address', address_type: "Billing", address: @billing_address, edit_link: edit_billing_address_path(@billing_address) %>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <% if @user.profile_picture.attached? then %>
+                <%=image_tag(@user.profile_picture, class: "rounded-circle img-fluid", style: "width: 150px;") %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <%end%>
+              <h5 class="my-3"><%= @user.first_name + ' ' + @user.last_name %></h5>
+              <p class="text-muted mb-1"><%= @user.email %></p>
+              <p class="text-muted mb-4"><%= @user.phone_number %></p>
+              <div class="d-flex justify-content-center mb-2">
+                <%= button_to 'Edit', edit_user_registration_path(@user), method: :get, class: "btn btn-primary" %></td>
+              </div>
+            </div>
+          </div>
+          <%= render 'credit_card', credit_card: @credit_card %>
+        </div>
+        <div class="col-lg-8">
+          <%= render 'address', address_type: "Shipping", address: @shipping_address, edit_link: edit_shipping_address_path(@shipping_address) %>
+          <%= render 'address', address_type: "Billing", address: @billing_address, edit_link: edit_billing_address_path(@billing_address) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </section>
