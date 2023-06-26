@@ -3,6 +3,8 @@
     <%= label_tag :status, 'Filter by status:', class: 'golden-text' %>
     <%= select_tag :status, options_for_select(['shipped', 'not shipped'], params[:status]), {:prompt => 'All', :class => 'select-button'}%>
     <%= submit_tag 'Filter', class: 'gold-button' %>
+
+    <%= link_to 'Download CSV', export_csv_orders_path(format: :csv), class: "gold-button-without-underline", style:"float: right; color: black;" %>
   </div>
 
 <% end %>

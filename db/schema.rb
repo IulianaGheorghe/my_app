@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_180705) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_084927) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -141,10 +141,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_180705) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "wishlist_products", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_wishlist_products_on_product_id"
+    t.index ["user_id"], name: "index_wishlist_products_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "ordered_products", "orders"
   add_foreign_key "ordered_products", "products"
+  add_foreign_key "wishlist_products", "products"
+  add_foreign_key "wishlist_products", "users"
 end

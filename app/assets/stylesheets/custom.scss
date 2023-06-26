@@ -142,3 +142,40 @@ th {
     padding: 6px; 
     font-family: 'Kalam', cursive; 
 }
+
+.gold-title {
+    color: #996515; 
+    text-align: center; 
+    font-family: 'Satisfy', cursive; 
+    font-weight: bold; 
+    font-size: 50px;
+}
+
+#new-button {
+    margin-bottom: 25px; 
+    background-color: #EEE8AA; 
+    border-color: #C09040; 
+    box-shadow: 0 7px 15px 0 #C09040;
+}
+
+#new-button:hover {
+    box-shadow: 0 5px 5px 0 #C09040, 0 7px 15px 0 #C09040;
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%); /* Center the circle vertically and horizontally */
+    /* Additional styling for the circle element */
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+    background-color: #FBDA8B;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 20px;
+    font-weight: 600;
+}

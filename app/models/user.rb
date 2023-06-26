@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :cart
   has_one_attached :profile_picture
   has_many :orders
+  has_many :wishlist_products
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

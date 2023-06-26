@@ -27,15 +27,15 @@
     </div>
     <br>
     <div class="form-outline mb-4">
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Current Password", id: "text-field" %>
+    </div>
+    <br>
+    <div class="form-outline mb-4">
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New password", id: "text-field" %>
     </div>
     <br>
     <div class="form-outline mb-4">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation", id: "text-field" %>
-    </div>
-    <br>
-    <div class="form-outline mb-4">
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Current Password", id: "text-field" %>
     </div>
     <br>
     <div class="actions">

@@ -51,6 +51,8 @@ gem 'pagy'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'csv'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
